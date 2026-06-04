@@ -21,6 +21,25 @@ interface Karya {
 }
 
 const LIMIT = 35;
+const SHORT_MONTHS_ID = [
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'Mei',
+  'Jun',
+  'Jul',
+  'Agu',
+  'Sep',
+  'Okt',
+  'Nov',
+  'Des',
+];
+
+const formatTanggal = (dateString: string) => {
+  const date = new Date(dateString);
+  return `${date.getUTCDate()} ${SHORT_MONTHS_ID[date.getUTCMonth()]} ${date.getUTCFullYear()}`;
+};
 
 export default function Home() {
   const [karyaList, setKaryaList] = useState<Karya[]>([]);
@@ -231,7 +250,7 @@ export default function Home() {
         </div>
 
         {/* Sisi Kanan: Kolom Pencarian & Dropdown Katalog */}
-        <div className="flex items-center gap-2 sm:gap-3 max-w-md w-full ml-2 justify-end">
+        <div className="flex items-center gap-2 sm:gap-3 max-w-md w-full ml-2 justify-end" suppressHydrationWarning>
           <div className="relative w-full max-w-[130px] xs:max-w-[180px] sm:max-w-xs">
             <input
               type="text"
@@ -378,11 +397,7 @@ export default function Home() {
                           Oleh: <strong className="text-slate-700 font-semibold">{karya.anggota?.nama || 'Anonim'}</strong>
                         </span>
                         <span className="font-medium whitespace-nowrap">
-                          {new Date(karya.dibuat_pada).toLocaleDateString('id-ID', {
-                            day: 'numeric',
-                            month: 'short',
-                            year: 'numeric'
-                          })}
+                          {formatTanggal(karya.dibuat_pada)}
                         </span>
                       </div>
                     </article>
