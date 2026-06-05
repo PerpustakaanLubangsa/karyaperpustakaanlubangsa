@@ -12,29 +12,35 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// Pembaruan Metadata, Judul, Deskripsi, dan Favicon dari file lokal
 export const metadata: Metadata = {
   title: "HubKarya - Galeri Karya Publik",
   description: "Wadah ekspresi, literasi digital, dan dokumentasi karya terbaik dari komunitas.",
   icons: {
     icon: "/image/logo/logo.png",
-    apple: "/image/logo/logo.png", // Opsional, agar logo muncul saat di-bookmark di perangkat iOS
+    apple: "/image/logo/logo.png",
+  },
+  verification: {
+    google: "NS_2uyDfRN5XgMVvZrXbeF2rYfz2qX2rJXqaSkcU0VQ",
   },
 };
 
+interface RootLayoutProps {
+  children: React.ReactNode;
+  modal: React.ReactNode;
+}
+
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+  modal,
+}: Readonly<RootLayoutProps>) {
   return (
-    // Mengubah atribut lang menjadi "id" (Indonesia)
     <html
       lang="id"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-slate-50 text-slate-900">
         {children}
+        {modal}
       </body>
     </html>
   );
