@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "HubKarya - Galeri Karya Publik",
-  description: "Wadah ekspresi, literasi digital, dan dokumentasi karya terbaik dari komunitas.",
+  title: "Karya Perpustakaan Lubangsa",
+  description: "Media Perpustakaan Lubangsa Dari Santri Ke Masyarakat",
   icons: {
     icon: "/image/logo/logo.png",
     apple: "/image/logo/logo.png",
