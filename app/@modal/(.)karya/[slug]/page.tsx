@@ -123,9 +123,15 @@ export default function DetailKaryaModal() {
               </p>
             </div>
 
-            <div className="text-slate-800 text-sm sm:text-base leading-relaxed whitespace-pre-line font-normal space-y-4">
-              {karya.isi}
-            </div>
+            {/* Perubahan Utama: 
+              - Menggunakan dangerouslySetInnerHTML agar tag HTML dari database ter-render.
+              - Menggunakan kelas [&>p]:mb-5 untuk memberikan jarak antar paragraf (<p>) yang lebih jauh dan lega.
+              - Menghapus 'whitespace-pre-line' karena struktur whitespace sudah ditangani oleh tag HTML asli.
+            */}
+            <div 
+              className="text-slate-800 text-sm sm:text-base leading-relaxed font-normal [&>p]:mb-5 last:[&>p]:mb-0"
+              dangerouslySetInnerHTML={{ __html: karya.isi }}
+            />
           </div>
         </article>
       )}
