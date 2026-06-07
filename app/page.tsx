@@ -209,13 +209,15 @@ export default function Home() {
         </div>
       </header>
 
-      <section className="relative w-full overflow-hidden">
+      {/* Bingkai Hero: h-auto memastikan tinggi section membungkus gambar secara dinamis */}
+      <section className="relative w-full h-auto overflow-hidden bg-slate-100">
         <img 
           src="/image/hero/hero.png" 
           alt="Hero Banner" 
-          className="w-full h-auto object-contain block"
+          className="w-full h-auto block object-cover md:object-contain"
         />
-        <div className="absolute bottom-0 left-0 right-0 h-12 sm:h-24 bg-gradient-to-t from-slate-50 to-transparent pointer-events-none" />
+        {/* Gradien overlay bawah menyesuaikan secara proporsional */}
+        <div className="absolute bottom-0 left-0 right-0 h-[15%] bg-gradient-to-t from-slate-50 to-transparent pointer-events-none" />
       </section>
 
       <div className="max-w-7xl mx-auto px-3 sm:px-12 py-6 sm:py-12">
@@ -258,31 +260,31 @@ export default function Home() {
                     <article className="bg-white rounded-xl sm:rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden hover:shadow-xl hover:border-slate-300/80 transition-all duration-300 flex flex-col">
                       <div className="flex flex-col">
                         {karya.foto_url && (
-                          <div className="relative h-36 sm:h-64 w-full bg-slate-100 overflow-hidden flex-shrink-0">
+                          <div className="relative h-auto w-full bg-slate-100 overflow-hidden flex-shrink-0">
                             <img
                               src={karya.foto_url} 
                               alt={karya.judul}
-                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                              className="w-full h-auto block object-contain group-hover:scale-102 transition-transform duration-500"
                               onError={(e) => {
                                 (e.target as HTMLImageElement).style.display = 'none';
                               }}
                             />
+                            <span className="absolute bottom-3 left-3 text-[9px] sm:text-[10px] font-bold px-2 py-1 bg-white/80 backdrop-blur-md text-slate-800 rounded-md uppercase tracking-wider shadow-sm z-10">
+                              {karya.kategori}
+                            </span>
                           </div>
                         )}
 
                         <div className="p-3 sm:p-6 flex flex-col">
-                          <div className="flex justify-between items-center mb-2 sm:mb-3">
-                            <span className="text-[9px] sm:text-[10px] font-bold px-1.5 sm:px-2 py-0.5 bg-slate-100 text-slate-800 rounded-md uppercase tracking-wider">
-                              {karya.kategori}
-                            </span>
-                            {karya.anggota?.rank && (
-                              <span className="text-[9px] sm:text-[10px] bg-amber-50 text-amber-700 border border-amber-200 font-bold px-1.5 sm:px-2 py-0.5 rounded-md shadow-sm">
-                                {karya.anggota.rank}
+                          {!karya.foto_url && (
+                            <div className="mb-2">
+                              <span className="text-[9px] sm:text-[10px] font-bold px-1.5 sm:px-2 py-0.5 bg-slate-100 text-slate-800 rounded-md uppercase tracking-wider">
+                                {karya.kategori}
                               </span>
-                            )}
-                          </div>
+                            </div>
+                          )}
                           
-                          <h2 className="text-sm sm:text-lg font-bold text-slate-900 line-clamp-2 tracking-tight group-hover:text-indigo-600 transition-colors">
+                          <h2 className="text-sm sm:text-lg font-bold text-slate-900 tracking-tight group-hover:text-indigo-600 transition-colors">
                             {karya.judul}
                           </h2>
                         </div>
