@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Lensa Perpustakaan Lubangsa",
-  description: "Media Perpustakaan Lubangsa Dari Santri Untuk Publik",
+  title: "Lensa Perpustakaan Lubangsa |Karya Santri Lubangsa",
+  description: "Media Karya Perpustakaan Lubangsa Dari Santri Untuk Publik",
   icons: {
     icon: "/image/logo/logo.png",
     apple: "/image/logo/logo.png",
